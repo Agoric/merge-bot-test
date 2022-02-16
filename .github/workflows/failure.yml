@@ -1,4 +1,4 @@
-name: Build release Docker Images
+name: Failure
 
 on:
   push:
