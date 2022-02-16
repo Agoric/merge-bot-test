@@ -1,0 +1,12 @@
+name: Succeed
+
+on:
+  pull_request:
+    branches: [main] # $default-branch
+
+jobs:
+  failed-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail the CI build on main
+        run: exit 1
