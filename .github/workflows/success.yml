@@ -7,5 +7,5 @@ jobs:
   failed-ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Fail the CI build on main
-        run: exit 1
+      - name: Succeed the CI build on main
+        run: exit 0
