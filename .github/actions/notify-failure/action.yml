@@ -1,0 +1,32 @@
+name: Notify on failure
+description: 'Notify on actions failure'
+
+inputs:
+  sendgrid_api_key:
+    description: 'Sendgrid API key'
+    required: true
+  recipients:
+    description: 'Recipients'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: send failure email
+      if: ${{ failure() }}
+      uses: dawidd6/action-send-mail@v2
+      with:
+        # mail server settings
+        server_address: smtp.sendgrid.net
+        server_port: 465
+        # user credentials
+        username: apikey
+        password: ${{ inputs.sendgrid_api_key }}
+        # email subject
+        subject: Failed ${{ github.repository }} CI ${{ github.job }} job
+        # email body as text
+        body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+        # comma-separated string, send email to
+        to: ${{ inputs.recipients }}
+        # from email name
+        from: Merge Bot Test
