@@ -28,4 +28,4 @@ runs:
         # comma-separated string, send email to
         to: ${{ inputs.recipients }}
         # from email name
-        from: Merge Bot Test
+        from: Merge Bot Test <mergebot@agoric.com>
