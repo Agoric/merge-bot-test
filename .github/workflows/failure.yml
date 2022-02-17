@@ -8,6 +8,7 @@ jobs:
   failed-ci:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Fail the CI build on main
         run: exit 1
       - uses: ./.github/actions/notify-failure
