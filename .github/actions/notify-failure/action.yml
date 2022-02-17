@@ -13,7 +13,6 @@ runs:
   using: composite
   steps:
     - name: send failure email
-      if: ${{ failure() }}
       uses: dawidd6/action-send-mail@v2
       with:
         # mail server settings
