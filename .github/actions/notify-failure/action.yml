@@ -1,0 +1,24 @@
+name: Notify on failure
+description: 'Notify on actions failure'
+
+runs:
+  using: composite
+  steps:
+    - name: send failure email
+      if: ${{ failure() }}
+      uses: dawidd6/action-send-mail@v2
+      with:
+        # mail server settings
+        server_address: smtp.sendgrid.net
+        server_port: 465
+        # user credentials
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        # email subject
+        subject: Failed ${{ github.repository }} CI ${{ github.job }} job
+        # email body as text
+        body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+        # comma-separated string, send email to
+        to: ${{ secrets.EMAIL_DESTINATION }}
+        # from email name
+        from: Merge Bot Test

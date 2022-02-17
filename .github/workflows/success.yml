@@ -9,3 +9,4 @@ jobs:
     steps:
       - name: Succeed the CI build on main
         run: exit 0
+      - uses: ./.github/actions/notify-failure

@@ -10,3 +10,4 @@ jobs:
     steps:
       - name: Fail the CI build on main
         run: exit 1
+      - uses: ./.github/actions/notify-failure
